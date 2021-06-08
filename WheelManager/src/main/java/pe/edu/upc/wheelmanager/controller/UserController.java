@@ -9,15 +9,12 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pe.edu.upc.wheelmanager.domain.model.Corporation;
 import pe.edu.upc.wheelmanager.domain.model.User;
 import pe.edu.upc.wheelmanager.domain.service.UserService;
-import pe.edu.upc.wheelmanager.resource.CorporationResource;
 import pe.edu.upc.wheelmanager.resource.SaveUserResource;
 import pe.edu.upc.wheelmanager.resource.UserResource;
 
 import javax.validation.Valid;
-import java.lang.reflect.Type;
 import java.util.List;
 import java.util.stream.Collectors;
 
