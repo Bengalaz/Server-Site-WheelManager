@@ -1,24 +1,14 @@
-package pe.edu.upc.wheelmanager.domain.model;
+package pe.edu.upc.wheelmanager.resource;
 
-import lombok.Getter;
-import lombok.Setter;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import pe.edu.upc.wheelmanager.domain.model.Corporation;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-@Entity
-@Table(name = "services")
-@Getter
-@Setter
-public class CorporationService extends AuditModel {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+public class SaveCorporationServiceResource {
     @Column(unique = true)
     private int rating;
 
@@ -32,6 +22,7 @@ public class CorporationService extends AuditModel {
     @Column(unique = true)
     private String description;
 
+
     @NotNull
     @Size(max = 20)
     @Column(unique = true)
@@ -39,9 +30,4 @@ public class CorporationService extends AuditModel {
 
     @Size(max = 200)
     private String picture;
-
-    @ManyToOne(fetch = FetchType.LAZY,optional = false)
-    @JoinColumn(name = "corporation_id",nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    private Corporation corporation;
 }
