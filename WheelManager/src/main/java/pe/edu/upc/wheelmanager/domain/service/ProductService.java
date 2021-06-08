@@ -6,7 +6,7 @@ import pe.edu.upc.wheelmanager.domain.model.Product;
 import org.springframework.data.domain.Pageable;
 
 public interface ProductService {
-    Product createProduct(Product product);
+    Product createProduct(Long corporationId, Product product);
     Product updateProduct(Long productId, Product productRequest);
     ResponseEntity<?> deleteProduct(Long productId);
     Page<Product> getAllProducts(Pageable pageable);

@@ -21,9 +21,12 @@ public class ProductServiceImpl implements ProductService {
     private CorporationRepository corporationRepository;
 
     @Override
-    public Product createProduct(Product product)
+    public Product createProduct(Long corporationId, Product product)
     {
-        return productRepository.save(product);
+        return corporationRepository.findById(corporationId).map(corporation -> {
+            product.setCorporation(corporation);
+            return productRepository.save(product);
+        }).orElseThrow(()->new ResourceNotFoundException("Corporation","Id",corporationId));
     }
 
     @Override
