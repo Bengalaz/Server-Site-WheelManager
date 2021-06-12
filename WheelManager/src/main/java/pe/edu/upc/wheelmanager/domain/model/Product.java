@@ -50,4 +50,9 @@ public class Product extends AuditModel {
     @JoinColumn(name = "corporation_id",nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Corporation corporation;
+
+    @ManyToOne(fetch = FetchType.LAZY,optional = false)
+    @JoinColumn(name = "category_id",nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private ProductCategory productCategory;
 }
