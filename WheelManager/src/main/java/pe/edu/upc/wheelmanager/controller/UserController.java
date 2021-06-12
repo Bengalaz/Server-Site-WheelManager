@@ -39,14 +39,16 @@ public class UserController {
     }
 
     @GetMapping("/users/{userId}")
-    public UserResource getUserById(@PathVariable(value = "corporationId") Long userId) {
+    public UserResource getUserById(@PathVariable(value = "userId") Long userId) {
         return convertToResource(userService.getUserById(userId));
     }
 
     @PostMapping("/users")
-    public UserResource createUser(@Valid @RequestBody SaveUserResource resource) {
+    public UserResource createUser(@RequestParam(required = false) Long corporationId,
+                                   @RequestParam(name="userProfileId") Long userProfileId,
+            @Valid @RequestBody SaveUserResource resource) {
         User user = convertToEntity(resource);
-        return convertToResource(userService.createUser(user));
+        return convertToResource(userService.createUser(corporationId,userProfileId,user));
     }
 
     @PutMapping("/users/{userId}")

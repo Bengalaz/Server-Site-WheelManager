@@ -1,5 +1,6 @@
 package pe.edu.upc.wheelmanager.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.OnDelete;
@@ -12,6 +13,7 @@ import javax.validation.constraints.Size;
 @Table(name = "users")
 @Getter
 @Setter
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class User extends AuditModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,7 +41,7 @@ public class User extends AuditModel {
     private UserProfile userProfile;
 
     @ManyToOne(fetch = FetchType.LAZY,optional = false)
-    @JoinColumn(name = "corporation_id",nullable = false)
+    @JoinColumn(name = "corporation_id",nullable = true)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Corporation corporation;
 

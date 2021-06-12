@@ -1,5 +1,6 @@
 package pe.edu.upc.wheelmanager.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,6 +12,7 @@ import javax.validation.constraints.Size;
 @Table(name = "corporations")
 @Getter
 @Setter
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Corporation extends AuditModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,7 +20,7 @@ public class Corporation extends AuditModel {
 
     @NotNull
     @Column(unique = true)
-    private int ruc;
+    private String ruc;
 
     @NotNull
     @Size(max = 25)

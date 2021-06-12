@@ -12,7 +12,7 @@ import javax.validation.constraints.Size;
 public class SaveCorporationResource {
     @NotNull
     @Column(unique = true)
-    private int ruc;
+    private String ruc;
 
     @NotNull
     @Size(max = 25)

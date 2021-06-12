@@ -1,10 +1,14 @@
 package pe.edu.upc.wheelmanager.resource;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.jetbrains.annotations.NotNull;
 
 import javax.persistence.Column;
 import javax.validation.constraints.Size;
 
+@Getter
+@Setter
 public class SaveUserResource {
     @NotNull
     @Size(max = 30)
@@ -21,5 +25,4 @@ public class SaveUserResource {
     private String email;
 
     private boolean isBusinessman;
-
 }
