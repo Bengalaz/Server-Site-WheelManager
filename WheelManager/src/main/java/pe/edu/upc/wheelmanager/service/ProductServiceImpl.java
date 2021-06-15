@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import pe.edu.upc.wheelmanager.domain.model.Product;
 import pe.edu.upc.wheelmanager.domain.repository.CorporationRepository;
+import pe.edu.upc.wheelmanager.domain.repository.ProductCategoryRepository;
 import pe.edu.upc.wheelmanager.domain.repository.ProductRepository;
 import org.springframework.data.domain.Pageable;
 import pe.edu.upc.wheelmanager.domain.service.ProductService;
@@ -19,6 +20,9 @@ public class ProductServiceImpl implements ProductService {
 
     @Autowired
     private CorporationRepository corporationRepository;
+
+    @Autowired
+    private ProductCategoryRepository productCategoryRepository;
 
     @Override
     public Product createProduct(Long corporationId, Product product)
@@ -36,7 +40,6 @@ public class ProductServiceImpl implements ProductService {
             product.setUnits_int_stock(productRequest.getUnits_int_stock());
             product.setName(productRequest.getName());
             product.setDescription(productRequest.getDescription());
-            product.setCategory(productRequest.getCategory());
             product.setPrice(productRequest.getPrice());
             product.setPicture(productRequest.getPicture());
             return productRepository.save(product);

@@ -39,7 +39,7 @@ public class UserController {
     }
 
     @GetMapping("/users/{userId}")
-    public UserResource getUserById(@PathVariable(value = "corporationId") Long userId) {
+    public UserResource getUserById(@PathVariable(value = "userId") Long userId) {
         return convertToResource(userService.getUserById(userId));
     }
 

@@ -34,10 +34,6 @@ public class Product extends AuditModel {
     @Column(unique = true)
     private String description;
 
-    @Size(max = 30)
-    @Column(unique = true)
-    private String category;
-
     @NotNull
     @Size(max = 20)
     @Column(unique = true)

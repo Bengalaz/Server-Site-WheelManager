@@ -14,7 +14,6 @@ public class ProductResource extends AuditModel {
     private int units_int_stock;
     private String name;
     private String description;
-    private String category;
     private  Double price;
     private String picture;
     private Corporation corporation;

@@ -39,7 +39,7 @@ public class User extends AuditModel {
     private UserProfile userProfile;
 
     @ManyToOne(fetch = FetchType.LAZY,optional = false)
-    @JoinColumn(name = "corporation_id",nullable = false)
+    @JoinColumn(name = "corporation_id",nullable = true)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Corporation corporation;
 
