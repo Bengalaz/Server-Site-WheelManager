@@ -8,7 +8,7 @@ import pe.edu.upc.wheelmanager.domain.model.AuditModel;
 @Setter
 public class CorporationResource extends AuditModel{
     private Long id;
-    private int ruc;
+    private String ruc;
     private String name;
     private String address;
     private String phone;
