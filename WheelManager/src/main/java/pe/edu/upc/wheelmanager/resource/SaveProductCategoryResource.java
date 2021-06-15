@@ -5,6 +5,7 @@ import lombok.Setter;
 import org.jetbrains.annotations.NotNull;
 
 import javax.persistence.Column;
+import javax.persistence.Lob;
 import javax.validation.constraints.Size;
 
 @Getter
@@ -16,7 +17,7 @@ public class SaveProductCategoryResource {
     @Column(unique = true)
     private String name;
 
-    @NotNull
-    @Size(max = 210)
+    @Lob
+    @Column(name = "picture", nullable = false)
     private String picture;
 }

@@ -19,7 +19,7 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Tag(name = "ProductsCategories", description = "ProductCategory API")
+@Tag(name = "ProductCategories", description = "ProductCategory API")
 @RestController
 @CrossOrigin
 @RequestMapping("/api")
@@ -29,7 +29,7 @@ public class ProductCategoryController {
     @Autowired
     private ModelMapper mapper;
 
-    @GetMapping(value = "/productsCategories")
+    @GetMapping(value = "/product_categories")
     public Page<ProductCategoryResource> getAllProductsCategories(@ParameterObject Pageable pageable) {
         Page<ProductCategory> corporationPage = productCategoryService.getAllProductCategory(pageable);
         List<ProductCategoryResource> resources = corporationPage.getContent()
@@ -38,24 +38,24 @@ public class ProductCategoryController {
         return new PageImpl<>(resources, pageable, resources.size());
     }
 
-    @GetMapping("/productsCategories/{productCategoryId}")
+    @GetMapping("/product_categories/{productCategoryId}")
     public ProductCategoryResource getProductCategoryById(@PathVariable(value = "productCategoryId") Long productCategoryId) {
         return convertToResource(productCategoryService.getProductCategoryById(productCategoryId));
     }
 
-    @PostMapping("/productsCategories")
+    @PostMapping("/product_categories")
     public ProductCategoryResource createProductCategory(@Valid @RequestBody SaveProductCategoryResource resource) {
         ProductCategory productCategory = convertToEntity(resource);
         return convertToResource(productCategoryService.createProductCategory(productCategory));
     }
 
-    @PutMapping("/productsCategories/{productCategoryId}")
+    @PutMapping("/product_categories/{productCategoryId}")
     public ProductCategoryResource updateProductCategory(@PathVariable Long productCategoryId, @Valid @RequestBody SaveProductCategoryResource resource) {
         ProductCategory productCategory = convertToEntity(resource);
         return convertToResource(productCategoryService.updateProductCategory(productCategoryId, productCategory));
     }
 
-    @DeleteMapping("/productsCategories/{productCategoryId}")
+    @DeleteMapping("/product_categories/{productCategoryId}")
     public ResponseEntity<?> deleteProductCategory(@PathVariable Long corporationId) {
         return productCategoryService.deleteProductCategory(corporationId);
     }

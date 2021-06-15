@@ -25,12 +25,15 @@ public class ProductServiceImpl implements ProductService {
     private ProductCategoryRepository productCategoryRepository;
 
     @Override
-    public Product createProduct(Long corporationId, Product product)
+    public Product createProduct(Long corporationId, Long productCategoryId, Product product)
     {
+        return productCategoryRepository.findById(productCategoryId).map( productCategory -> {
+            product.setProductCategory(productCategory);
         return corporationRepository.findById(corporationId).map(corporation -> {
             product.setCorporation(corporation);
             return productRepository.save(product);
         }).orElseThrow(()->new ResourceNotFoundException("Corporation","Id",corporationId));
+    }).orElseThrow(()->new ResourceNotFoundException("ProductCategory","Id",productCategoryId));
     }
 
     @Override

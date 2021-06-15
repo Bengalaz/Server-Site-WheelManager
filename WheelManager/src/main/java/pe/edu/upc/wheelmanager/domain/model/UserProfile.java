@@ -29,5 +29,4 @@ public class UserProfile{
     @Size(max = 30)
     private String gender;
 
-
 }

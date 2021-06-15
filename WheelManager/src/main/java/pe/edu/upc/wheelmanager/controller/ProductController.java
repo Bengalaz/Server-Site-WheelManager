@@ -45,9 +45,10 @@ public class ProductController {
 
     @PostMapping("/products")
     public ProductResource createProduct(@RequestParam(name="corporation_id") Long corporationId,
+                                         @RequestParam(name="category_id") Long productCategoryId,
                                          @Valid @RequestBody SaveProductResource resource) {
         Product product = convertToEntity(resource);
-        return convertToResource(productService.createProduct(corporationId, product));
+        return convertToResource(productService.createProduct(corporationId,productCategoryId, product));
     }
 
     @PutMapping("/products/{productId}")

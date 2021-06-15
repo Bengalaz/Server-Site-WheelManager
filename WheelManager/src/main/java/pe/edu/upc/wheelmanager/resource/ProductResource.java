@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import pe.edu.upc.wheelmanager.domain.model.AuditModel;
 import pe.edu.upc.wheelmanager.domain.model.Corporation;
+import pe.edu.upc.wheelmanager.domain.model.ProductCategory;
 
 
 @Getter
@@ -17,4 +18,5 @@ public class ProductResource extends AuditModel {
     private  Double price;
     private String picture;
     private Corporation corporation;
+    private ProductCategory productCategory;
 }

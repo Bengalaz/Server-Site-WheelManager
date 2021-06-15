@@ -3,6 +3,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.Column;
+import javax.persistence.Lob;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -21,9 +22,8 @@ public class SaveProductResource {
     @Column(unique = true)
     private String name;
 
-    @NotNull
-    @Size(max = 30)
-    @Column(unique = true)
+    @Lob
+    @Column(name = "description", nullable = false)
     private String description;
 
     @NotNull
@@ -31,6 +31,7 @@ public class SaveProductResource {
     @Column(unique = true)
     private  Double price;
 
-    @Size(max = 200)
+    @Lob
+    @Column(name = "picture", nullable = false)
     private String picture;
 }
